@@ -1,8 +1,183 @@
-<html>
+﻿<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html>
+<html class="ui-mobile" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<meta name="description" content="{dede:global.cfg_description/}" />
+<link rel="stylesheet" type="text/css" href="{dede:global.cfg_templets_skin/}/css/style.css">
+<link rel="stylesheet" type="text/css" href="{dede:global.cfg_templets_skin/}/css/kandytabs.css"/>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/jquery.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/kandytabs.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/ko.js"></script>
+<!-- ajax -->
+<script type="text/javascript">
+  var $ajaxmoreurl = "";
+  var $page = "2";
+  var $total_page = "";
+  var site_dir="/wap/";
+  var skin_dir="/wap/skin/honglou/";
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+//Main Swiper
+    //Clickable pagination
+   
+	$('dl.tab').each(function(index, element) {
+        $(this).KandyTabs({trigger : "hover"});
+    });
+	
+	$('.tabtitle').each(function(index, element) {
+		$(this).find('span:last').css('background','none');
+    });
+});
+</script>
 </head>
+
 <body>
-这是我的第一个简单的网页
-<a href="https://feng-zhenwei.github.io/testBlog.github.io/">W3School</a>
+<div data-role="page">
+	<div id="header" data-role="header">
+    	<div class="top-box clear area">
+            <div class="logo"><a href="/wap/"><img src="{dede:global.cfg_templets_skin/}/picture/231139466641.jpg"></a></div>
+        </div>
+    </div><!--header-->
+    <div id="content" data-role="content">
+        <div class="main-box area main-1">
+        	
+        	<div class="focus-box area">
+                <div class="focus">
+                    <div class="swiper-container swiper-free">
+                       <div class="pagination pagination-free"></div>
+                       <ul class="swiper-wrapper">
+					       <li class="swiper-slide red-slide">
+                             <a href=""><img src="{dede:global.cfg_templets_skin/}/picture/231141196198.jpg" /></a>
+                           </li>
+						   <li class="swiper-slide red-slide">
+                             <a href=""><img src="{dede:global.cfg_templets_skin/}/picture/231141134480.jpg" /></a>
+                           </li>
+						  <li class="swiper-slide red-slide">
+                             <a href=""><img src="{dede:global.cfg_templets_skin/}/picture/231141062771.jpg" /></a>
+                           </li>
+					   </ul>
+                    </div>
+                </div>
+            </div><!--focus-box-->
+            <script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/idangerous.swiper-1.9.1.min.js"></script>
+			<script type="text/javascript">
+				//Main Swiper
+				var swiperFree = $('.swiper-free').swiper({
+					pagination : '.pagination-free',
+					freeModeFluid: true,
+					autoPlay:3000,
+					slidesPerSlide :1
+				})
+				//Clickable pagination
+				$('.pagination-free .swiper-pagination-switch').click(function(){
+					swiperFree.swipeTo($(this).index());
+				})
+            </script>
+            <div class="nav-box clear">
+                <span><a href="/wap/">网站首页</a></span>
+                {dede:channel type='top' row='7'}
+				<span><a href="[field:typeurl/]">[field:typename/]</a></span>
+                {/dede:channel}
+			 </div><!--nav-box-->
+            <script type="text/javascript">
+            var navClassALen=$('.nav-box span').length;
+			if(navClassALen%2==1){
+				$('.nav-box span:last').addClass('last');
+			}
+            </script>
+            <ul class="m-linklist j-child-row2 clear">
+            	<li><a href="/wap/?c=message&a=type&tid=50"><img src="{dede:global.cfg_templets_skin/}/picture/pic-1.gif"/></a></li>
+                <li><a href="tel:023-68816881"><img src="{dede:global.cfg_templets_skin/}/picture/pic-2.gif"/></a></li>
+                <li><a href="http://api.map.baidu.com/geocoder?output=html&address=重庆市渝中区大坪大黄路竞地花园路口"><img src="{dede:global.cfg_templets_skin/}/picture/pic-3.gif" target="blank"/></a></li>
+                <li><a href="/wap/?c=article&a=type&tid=51"><img src="{dede:global.cfg_templets_skin/}/picture/pic-4.gif"/></a></li>
+            </ul>
+            <div class="phone-box"><a href="tel:023-68816881">咨询热线：086-888888</a></div>
+			<!-- 华美经典项目 -->
+			            <div class="title">
+            	<span class="text"><a href="#">科室快速导航</a></span>
+                <a class="more" href="#">+更多</a>
+            </div>
+			<!-- 循环华美经典项目二级 -->
+            <ul class="m-linklist2 j-child-auto2 clear">
+				{dede:channel type='son' typeid='3'}
+            	<li><a href="[field:typeurl/]">[field:typename/]</a></li>
+				{/dede:channel}
+            </ul>
+            <dl class="tab">
+			<!-- 医院动态 -->
+                 {dede:channelartlist typeid='3'}
+			     <dt><span>{dede:field name='typename'/}</span><a class="more" href="{dede:field name='typeurl'/}">+更多</a></dt>
+			     <dd>
+                    <ul class="news-ul bt10">
+                        {dede:arclist titlelen='30' row='4'}
+					    <li><a href="[field:arcurl/]">[field:title/]</a></li>
+                        {/dede:arclist}
+					</ul>
+                </dd>
+                {/dede:channelartlist}
+			<!-- 媒体报道 -->
+            </dl>
+			<!-- 医院简介 -->
+			<div class="title">
+            	<span class="text"><a href="#">医院简介</a></span>
+                <a class="more" href="#">更多>></a>
+			
+            </div>
+            <div class="con"><p>青春期是从儿童期向成人期自然过渡的时期。青春期的少男少女们在品尝成长快乐的同时，也经受着各种发育中的困惑煎熬，对自己身体发生的变化既好奇又害怕，可是生理卫生老师讲的不解渴，父母回答得很含糊，去看男科妇科又感觉很羞涩、难为情。<a href="#">[查看详细]</a></p></div>
+						<!-- 专家团队 -->
+            <dl class="tab">
+			     <dt><span>专家团队</span><a class="more" href="#">+更多</a></dt>
+			     <dd>
+                   <ul class="case-ul clear">
+                       {dede:arclist row='2' titlelen='30' typeid=''}
+				       <li>
+                            <a href="[field:arcurl/]"><img src="[field:litpic/]" />
+                            <div class="right rt-box">
+                            <h4>[field:title/]</h4>
+                            <p class="appellation">[field:zhicheng/]</p>
+                            <p class="introduce">[field:info/]</p>
+                            </div>
+                            </a>
+                        </li>
+                        {/dede:arclist}
+					 </ul>
+                </dd>
+            </dl>
+			<!-- 案例展示 -->
+            <div class="title">
+			    <span class="text"><a href="#">案例展示</a></span>
+                <a class="more" href="#">更多>></a>
+		   </div>
+            <ul class="m-h2cnlist">
+               {dede:arclist row='1' titlelen='30' infolen='110' typeid=''}
+			    <li>
+                	<a href="[field:arcurl/]">
+                	<h2>[field:title/]</h2>
+                    <div class="cn">[field:info/]... </div>
+                    </a>
+                </li>
+				{/dede:arclist}
+            </ul>
+
+        </div><!--main-box-->
+        <div class="srollTop-box area" id="back_top"><a href="javascript:void(0);">返回顶部</a></div>
+    </div><!--content-->
+   <div id="footer" data-role="footer" data-position="fixed">
+    	<div class="footer-box clear area">
+        	<ul>
+                <li><a data-role="none" class="icon tel" href="tel:12345678"></a></li>
+                <li><a data-role="none" class="icon sms" href="sms:"></a></li>
+                <li><a data-role="none" class="icon board" href="#"></a></li>
+                <li class="last"><a data-role="none" class="icon map"  href="http://api.map.baidu.com/geocoder?output=html&address=重庆市渝中区大坪大黄路竞地花园路口" target="blank"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
 </html>
